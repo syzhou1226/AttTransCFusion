@@ -2,7 +2,8 @@ import torch
 from torch.autograd import Variable
 import argparse
 from datetime import datetime
-from lib.TransFuse import TransFuse_S
+
+from lib.AttTransCFusion import AttTransCFusion
 from utils.dataloader import get_loader, test_dataset
 from utils.utils import clip_gradient, adjust_lr, AvgMeter
 import torch.nn.functional as F
@@ -118,9 +119,9 @@ if __name__ == '__main__':
     parser.add_argument('--batchsize', type=int, default=16, help='training batch size')#16
     parser.add_argument('--grad_norm', type=float, default=2.0, help='gradient clipping norm')
     parser.add_argument('--train_path', type=str,
-                        default='/home/amax/Team/wanmenyao/data/polyp/TrainDataset', help='path to train dataset')
+                        default='./data/polyp/TrainDataset', help='path to train dataset')
     parser.add_argument('--test_path', type=str,
-                        default='/home/amax/Team/wanmenyao/data/polyp/TestDataset/Kvasir', help='path to test dataset')
+                        default='./data/polyp/TestDataset/Kvasir', help='path to test dataset')
     parser.add_argument('--train_save', type=str, default='TransFuse_S')
     parser.add_argument('--beta1', type=float, default=0.5, help='beta1 of adam optimizer')
     parser.add_argument('--beta2', type=float, default=0.999, help='beta2 of adam optimizer')
@@ -132,7 +133,7 @@ if __name__ == '__main__':
     opt = parser.parse_args()
 
     # ---- build models ----
-    model = TransFuse_S()
+    model = AttTransCFusion()
     model = model.cuda()
     params = model.parameters()
     optimizer = torch.optim.Adam(params, opt.lr, betas=(opt.beta1, opt.beta2))
