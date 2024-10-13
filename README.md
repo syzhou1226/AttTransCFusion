@@ -21,7 +21,7 @@ Code for paper "Attention-Guided Fusion of Transformers and CNNs for Enhanced Me
 | ETIS-Larib   | [Silva et al. 2014](https://doi.org/10.1007/s11548-013-0926-3)<br/> |
 | ISIC 2017    | [ Gutman et al. 2016](https://doi.org/10.48550/arXiv.1605.01397)<br/>(https://challenge.isic-archive.com/data/) |
 
-
+Please download the  dataset on the website above , and modify the corresponding data path in the train/test file.
 
 ## Train/Test
 
